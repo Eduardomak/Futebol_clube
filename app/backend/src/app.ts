@@ -1,4 +1,14 @@
 import * as express from 'express';
+/* import TeamController from './controllers/teamController'; */
+/* import UserController from './controllers/userController'; */
+/* import MatchController from './controllers/matchController'; */
+/* import validLogin from './middlewares/validations/login'; */
+/* import ValidToken from './middlewares/validateToken'; */
+/* import login from './routes/loginRoute';
+import leaderB from './routes/leaderBoardRoute';
+import teamRoute from './routes/teamRoute';
+import match from './routes/matchRoute'; */
+import routes from './routes/index';
 
 class App {
   public app: express.Express;
@@ -19,9 +29,10 @@ class App {
       res.header('Access-Control-Allow-Headers', '*');
       next();
     };
-
     this.app.use(express.json());
     this.app.use(accessControl);
+
+    this.app.use(routes);
   }
 
   public start(PORT: string | number):void {

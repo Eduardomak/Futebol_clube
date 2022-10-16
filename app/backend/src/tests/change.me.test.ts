@@ -1,6 +1,6 @@
-import * as sinon from 'sinon';
+/* import * as sinon from 'sinon';
 import * as chai from 'chai';
-// @ts-ignore
+@ts-ignore
 import chaiHttp = require('chai-http');
 
 import { app } from '../app';
@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Seu teste', () => {
+describe('Seu teste', () => { */
   /**
    * Exemplo do uso de stubs com tipos
    */
@@ -39,7 +39,8 @@ describe('Seu teste', () => {
   //   expect(...)
   // });
 
-  it('Seu sub-teste', () => {
+/*   it('Seu sub-teste', () => {
     expect(false).to.be.eq(true);
   });
 });
+ */

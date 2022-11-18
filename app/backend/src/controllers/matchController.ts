@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 /* import errorHandler from '../middlewares/errorHandler'; */
+import * as status from 'http-status';
 import MatchService from '../services/matchService';
 import UserService from '../services/userService';
 
@@ -11,7 +12,7 @@ export default class MatchController {
 
   async getAllCon(req: Request, res: Response) {
     const result = await this._matchService.getAllMatches();
-    return res.status(200).json(result);
+    return res.status(status.OK).json(result);
   }
 
   async createCon(req: Request, res: Response, next: NextFunction) {
@@ -25,7 +26,7 @@ export default class MatchController {
         return res.status(Number(result.status)).json({
           message: result.message });
       }
-      return res.status(201).json(result);
+      return res.status(status.CREATED).json(result);
     } catch (err) {
       console.log(err);
       next(err);
@@ -35,13 +36,13 @@ export default class MatchController {
   async changeProgress(req: Request, res: Response, _next: NextFunction) {
     const { id } = req.params;
     await this._matchService.changeProgress(Number(id));
-    return res.status(200).json({ message: 'Finished' });
+    return res.status(status.OK).json({ message: 'Finished' });
   }
 
   async changeScore(req: Request, res: Response, _next: NextFunction) {
     const { id } = req.params;
     const { homeTeamGoals, awayTeamGoals } = req.body;
     await this._matchService.changeScore({ homeTeamGoals, awayTeamGoals }, Number(id));
-    return res.status(200).json({ message: 'Finished' });
+    return res.status(status.OK).json({ message: 'Finished' });
   }
 }

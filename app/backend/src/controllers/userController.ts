@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { JwtPayload } from 'jsonwebtoken';
+import * as status from 'http-status';
 import UserService from '../services/userService';
 
 export default class UserController {
@@ -22,7 +23,7 @@ export default class UserController {
     const data = req.body.user.email as JwtPayload;
     console.log(data);
     const result = await this._userService.validToken(data);
-    return res.status(200).json({ role: result[0].role });
+    return res.status(status.OK).json({ role: result[0].role });
     /*       res.status(401).json({ message: 'wrong mistake' }); */
   }
 }
